@@ -1,2 +1,3 @@
-- git_note_3月份的笔记.md仅供自己查看，写的很乱，很多也没搞明白
+- 可参考`git_relearn_重新从0学习git.md` 0基础学习git
+- `git_note_3月份的笔记.md`仅供自己查看，写的很乱，很多也没搞明白
 - 其中progit.pdf来自于官网 https://git-scm.com/book 也有中文版的，官网可免费下载
