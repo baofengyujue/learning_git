@@ -1,5 +1,15 @@
 git_relearn.md
 
+- [配置](#配置)
+- [开始](#开始)
+  - [aa](#aa)
+- [Viewing project history](#viewing-project-history)
+- [branch](#branch)
+- [Git for collaboration](#git-for-collaboration)
+- [连接GitHub](#连接github)
+  - [直接通过git clone连接GitHub](#直接通过git-clone连接github)
+  - [总结GitHub连接方式(https)](#总结github连接方式https)
+
 # 配置
 
 ubuntu下安装git
@@ -392,7 +402,15 @@ $ git push -u origin master
 ```
 将本地的repo上传push到GitHub服务器
 
-Note the -u (also known as set upstream) flag only needs to be used on the initial push, all subsequent pushes can leave it out.
+Note the -u (also known as set upstream) flag only needs to be used on the initial push, all subsequent pushes can leave it out.<br>
+如果远程repo刚创建只有一个主分支，那么'-u'也是可以省略的（待研究）
+
+如果第一次没有commit就git push -u的话，会出现下面报错：
+```
+error: src refspec master does not match any
+error: failed to push some refs to 'https://github.com/baofengyujue/learning_powershell.git'
+```
+
 
 `git checkout test`与`git switch test`都为切换到test分支
 
@@ -534,11 +552,53 @@ JackWang@DESKTOP-BH3PFON MINGW64 /d/xampp/htdocs/jw_git/my_notes (main)
 GitHub是通过`git branch -M "main"`这一句重命名主分支为main的
 
 
+## 直接通过git clone连接GitHub
+
+在GitHub网站创建repo<br>
+然后执行：
+```
+$ git clone https://github.com/baofengyujue/saved_notes.git
+```
+这时命令行会输出：
+```
+Cloning into 'saved_notes'...
+warning: You appear to have cloned an empty repository.
+```
+这时就已经和远程建立了连接了，<br>
+也不需要git add remote或者-u push了，也不需要在本地创建repo了
+
+如果目录里已经有了要git clone下来的repo名的目录了，那么并不会clone远程repo，而是报错：
+```
+fatal: destination path 'learning_excel' already exists and is not an empty directory.
+```
 
 
 
+## 总结GitHub连接方式(https)
 
+myrepo/目录中存放的项目文件<br>
+两种方式都已经提前在GitHub网站将myrepo仓库创建好了<br>
+<myrepo_remote>即为仓库远程https地址
 
+git remote add方式：
+```
+cd myrepo/
+git init
+git add .
+git commit -m 'init'
+git remote add origin <myrepo_remote>
+git push -u origin master
+```
+
+git clone方式：
+```
+git clone <myrepo_remote>
+cd my myrepo/
+(复制粘贴项目文件到myrepo/)
+git add .
+git commit -m 'init'
+git push origin master
+```
 
 部分内容引用自：
 
